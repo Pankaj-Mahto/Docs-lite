@@ -1,0 +1,17 @@
+/* client/src/components/TextEditor.css */
+.quill-editor-container {
+  position: relative;
+  width: 100%;
+  max-width: 816px;           /* 8.5 inches × 96 dpi = 816px */
+  margin: 0 auto;
+  padding: 0 40px;
+  box-sizing: border-box;
+  overflow-x: auto;           /* ← Enables horizontal scroll */
+  overflow-y: hidden;
+}
+
+.quill-editor-container .ql-container {
+  width: 100% !important;
+  padding: 0 !important;
+  box-sizing: border-box;
+}

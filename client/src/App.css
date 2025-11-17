@@ -1,0 +1,104 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  background: linear-gradient(135deg, #ffffff, #f7f7f7);
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+/* Fade-in animation for page */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Logo styles with smooth animations */
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  transition: transform 0.4s ease, filter 300ms ease;
+  will-change: transform, filter;
+}
+
+/* On hover, lift + glow */
+.logo:hover {
+  transform: scale(1.07) rotate(2deg);
+  filter: drop-shadow(0 0 1.8em #646cffaa);
+}
+
+/* React logo hover glow */
+.logo.react:hover {
+  filter: drop-shadow(0 0 1.8em #61dafbaa);
+}
+
+/* Spin animation if user prefers animation */
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 14s linear;
+  }
+}
+
+/* Card with soft 3D feel */
+.card {
+  padding: 2em;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* Lift on hover */
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+}
+
+/* Soft text */
+.read-the-docs {
+  color: #000;
+  opacity: 0.6;
+  transition: opacity 0.3s;
+}
+
+.read-the-docs:hover {
+  opacity: 1;
+}
+
+.quill {
+  display: flex;
+  justify-content: center;
+}
+
+.ql-container {
+  border: none !important;
+}
+
+.ql-editor {
+  width: 8.5in;
+  min-height: 11in;
+  padding: 1in;
+  margin: 20px auto;
+  background: white;
+  border-radius: 6px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.15);
+  font-size: 15px;
+  line-height: 1.4;
+}
