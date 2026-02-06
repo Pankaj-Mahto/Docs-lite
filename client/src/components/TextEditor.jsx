@@ -314,7 +314,7 @@ export default function TextEditor() {
   const [showRuler, setShowRuler] = useState(false);
   const [showComments, setShowComments] = useState(false);
   const [comments, setComments] = useState([]);
-
+ 
   const [rulerUnit, setRulerUnit] = useState("in");
   const [leftIndent, setLeftIndent] = useState(0);
   const [rightIndent, setRightIndent] = useState(0);

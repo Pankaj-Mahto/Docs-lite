@@ -9,7 +9,11 @@ const multer = require('multer');
 const path = require('path');
 const Document = require('./Document');
 
+
 const app = express();
+
+const _dirname = path.resolve();
+
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
@@ -140,6 +144,12 @@ app.delete('/documents/:id', async (req, res) => {
   await Document.findByIdAndDelete(req.params.id);
   res.sendStatus(200);
 });
+
+app.use(express.static(path.join(_dirname, "/client/dist")));
+app.get('*', (_,res) => {
+    res.sendFile(path.resolve(_dirname, "client", "dist", "index.html"));
+});
+
 
 const PORT = process.env.PORT || 3001;
 server.listen(PORT, () => {
