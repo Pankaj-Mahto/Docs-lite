@@ -17,7 +17,7 @@ const _dirname = path.resolve();
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:5173",
+    origin: "https://docs-lite.onrender.com",
     methods: ["GET", "POST"],
     allowedHeaders: ["Content-Type"],
   }
@@ -29,7 +29,7 @@ mongoose.connect(process.env.MONGO_URI).then(() => {
   console.error('MongoDB connection error:', err);
 });
 
-app.use(cors({ origin: 'http://localhost:5173' }));
+app.use(cors({ origin: 'https://docs-lite.onrender.com' }));
 app.use(express.json());
 app.use(express.json({ limit: '500mb' }));
 app.use(express.urlencoded({ limit: '500mb', extended: true }));
@@ -45,7 +45,7 @@ app.post('/upload', upload.single('image'), (req, res) => {
   if (!file) {
     return res.status(400).json({ error: 'No file uploaded' });
   }
-  const imageUrl = `http://localhost:3001/uploads/${file.filename}`;
+  const imageUrl = `https://docs-lite.onrender.com/uploads/${file.filename}`;
   res.status(200).json({ url: imageUrl });
 });
 

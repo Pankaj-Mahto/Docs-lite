@@ -10,26 +10,26 @@ function DocumentDashboard() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get('http://localhost:3001/documents').then(response => {
+    axios.get('https://docs-lite.onrender.com/documents').then(response => {
       setDocuments(response.data);
     });
   }, []);
 
   const createNewDocument = () => {
     const title = newTitle.trim() ? newTitle : 'Untitled Document';
-    axios.post('http://localhost:3001/documents', { title }).then(response => {
+    axios.post('https://docs-lite.onrender.com/documents', { title }).then(response => {
       navigate(`/documents/${response.data._id}`);
     });
   };
 
   const deleteDocument = (id) => {
-    axios.delete(`http://localhost:3001/documents/${id}`).then(() => {
+    axios.delete(`https://docs-lite.onrender.com/documents/${id}`).then(() => {
       setDocuments(documents.filter(document => document._id !== id));
     });
   };
 
   const updateDocumentTitle = (id, title) => {
-    axios.put(`http://localhost:3001/documents/${id}`, { title }).then(response => {
+    axios.put(`https://docs-lite.onrender.com/documents/${id}`, { title }).then(response => {
       setDocuments(documents.map(doc => (doc._id === id ? response.data : doc)));
     });
   };
