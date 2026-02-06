@@ -1,155 +1,115 @@
-# Google Docs Clone
 
-This project is a robust and feature-rich collaborative text editor built using the MERN stack (MongoDB, Express, React, and Node.js) and Quill for the text editor component. It supports real-time synchronization and collaboration among multiple users through WebSockets, facilitated by Socket.IO. Users can create, edit, and save documents, with changes being instantly shared among all connected clients, ensuring seamless real-time collaboration. Additionally, the editor includes support for image uploads via a custom toolbar button, enhancing the document editing capabilities.
+# [Google Docs Clone](https://docs-lite.onrender.com)
 
-## Screenshots
+A **robust and feature-rich collaborative text editor** built with the MERN stack (MongoDB, Express, React, Node.js) and **Quill** for rich text editing. It supports **real-time collaboration**, allowing multiple users to edit documents simultaneously, with instant updates using **Socket.IO**. Users can also upload images via a custom toolbar, enhancing document creation and editing.
 
-### Development
-![Development](Screenshots/Development.png)
+---
 
-### Dashboard
-![Dashboard](Screenshots/Dashboard.png)
+## 🚀 Live Demo
 
-### Real-Time Editing
-![Real-Time Editing](Screenshots/Real-Time-Editing.png)
+[View Live Demo](https://docs-lite.onrender.com)
 
-### Image Upload
-![Image Upload](Screenshots/Image-Upload.png)
+---
 
-### Database
-![Database](Screenshots/Database.png)
+## ✨ Features
 
+* Real-time collaborative editing
+* Create, edit, and save documents
+* Upload images via a custom toolbar button
+* Instant synchronization across all connected clients
+* MongoDB integration for persistent document storage
 
-## Features
+---
 
-- Real-time collaborative editing
-- Document creation, editing, and saving
-- Image uploads via custom toolbar button
-- Instant synchronization across clients
-- MongoDB integration for document storage
+## 🛠️ Technologies Used
 
-## Technologies Used
+* **Frontend:** React, Quill, Socket.IO-client, Vite
+* **Backend:** Node.js, Express, Socket.IO, Multer, Mongoose
+* **Database:** MongoDB
 
-- React
-- Quill
-- Socket.IO
-- Node.js
-- Express
-- MongoDB
-- Multer
+---
 
-## Folder Structure
+## 🗂️ Folder Structure
 
-The project is structured into two main directories: `client` and `server`.
+```
+Google-Docs-Clone/
+├─ client/           # React frontend
+│  ├─ src/
+│  │  ├─ components/ # Header, TextEditor, etc.
+│  │  ├─ App.js
+│  │  └─ index.js
+│  ├─ public/
+│  └─ package.json
+├─ server/           # Express backend
+│  ├─ uploads/       # Uploaded images
+│  ├─ Document.js    # Mongoose schema
+│  ├─ server.js
+│  ├─ .env           # Environment variables
+│  └─ package.json
+```
 
-### Client
+---
 
-The `client` directory contains the frontend code built with React.
+## ⚙️ Setup & Installation
 
-- `src`: Contains the source code for the React application.
-  - `components`: Contains React components like `TextEditor` and `Header`.
-  - `App.js`: Main application component.
-  - `index.js`: Entry point of the React application.
-- `public`: Contains the public assets for the application.
-- `package.json`: Lists the frontend dependencies and scripts.
+### 1. Clone the repository
 
-### Server
+```bash
+git clone https://github.com/vasanthsai14/Google-Docs-Clone.git
+cd Google-Docs-Clone
+```
 
-The `server` directory contains the backend code built with Express.
+### 2. Install Client Dependencies
 
-- `uploads`: Directory to store uploaded images.
-- `Document.js`: Mongoose schema for documents.
-- `server.js`: Main server file which sets up Express, Socket.IO, and MongoDB.
-- `.env`: Environment variables for the server.
-- `package.json`: Lists the backend dependencies and scripts.
+```bash
+cd client
+npm install
+npm run dev
+```
 
-## Dependencies
+### 3. Install Server Dependencies
 
-### Client
+```bash
+cd ../server
+npm install
+```
 
-- **React**: A JavaScript library for building user interfaces.
-- **Quill**: A rich text editor.
-- **Socket.IO-client**: Real-time communication library for the frontend.
-- **Vite**: A fast development server and build tool for modern web projects.
+### 4. Configure Environment Variables
 
-### Server
+Create a `.env` file in the `server` directory:
 
-- **Express**: A web framework for Node.js.
-- **Mongoose**: A MongoDB object modeling tool.
-- **Socket.IO**: Real-time communication library for the backend.
-- **Multer**: A middleware for handling multipart/form-data, used for image uploads.
-- **dotenv**: A module to load environment variables from a `.env` file.
+```
+MONGO_URI=your_mongodb_connection_string
+```
 
-## How to Run the Project
+### 5. Start the Server
 
-1. **Clone the repository:**
+```bash
+npm start
+```
 
-    ```bash
-    git clone https://github.com/vasanthsai14/Google-Docs-Clone.git
-    ```
+### 6. Open in Browser
 
-2. **Navigate to the project directory:**
+```
+http://localhost:5173
+```
 
-    ```bash
-    cd Google-Docs-Clone
-    ```
+---
 
-3. **Install the dependencies for the client:**
+## 🔌 How Real-Time Collaboration Works
 
-    ```bash
-    cd client
-    npm install
-    ```
+We use **Socket.IO** to enable **instant synchronization** between clients. Socket.IO is a library for real-time, bidirectional communication between client and server.
 
-4. **Start the client:**
+### Key Concepts
 
-    ```bash
-    npm run dev
-    ```
+* **Connection:** Establishes a link between client and server
+* **Events:** Named messages passed back and forth
+* **Broadcasting:** Sending updates to multiple clients simultaneously
 
-5. **Install the dependencies for the server:**
+### Example
 
-    ```bash
-    cd ../server
-    npm install
-    ```
+**Server-side:**
 
-6. **Set up environment variables:**
-
-    Create a `.env` file in the `server` directory and add the following variables:
-
-    ```
-    MONGO_URI=your_mongodb_connection_string
-    ```
-
-7. **Start the server:**
-
-    ```bash
-    npm start
-    ```
-
-8. **Open your browser and go to:**
-
-    ```
-    http://localhost:5173
-    ```
-
-## Socket.IO Explanation
-
-Socket.IO is a JavaScript library for real-time web applications. It enables real-time, bidirectional, and event-based communication between web clients and servers. Socket.IO consists of two parts:
-
-- A server-side library for Node.js
-- A client-side library that runs in the browser
-
-### Key Concepts:
-
-- **Connection:** Establishes a connection between the client and server.
-- **Events:** Named messages sent between the client and server.
-- **Broadcasting:** Sending a message to multiple clients.
-
-### Example Usage:
-
-In the server code:
 ```javascript
 io.on("connection", (socket) => {
   socket.on("get-document", async (documentId) => {
@@ -166,4 +126,14 @@ io.on("connection", (socket) => {
     });
   });
 });
+```
 
+This ensures **all users see changes in real time**, just like Google Docs.
+
+---
+
+## 💡 License
+
+MIT License
+
+---
